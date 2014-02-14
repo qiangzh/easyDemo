@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/repos/!svn/ver/3/Test/src/com/thread
+END
+ThreadLocalTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/repos/!svn/ver/3/Test/src/com/thread/ThreadLocalTest.java
+END
+SemaphoreTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/repos/!svn/ver/3/Test/src/com/thread/SemaphoreTest.java
+END
+EatApplTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/repos/!svn/ver/3/Test/src/com/thread/EatApplTest.java
+END
+IntegerLockTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/repos/!svn/ver/3/Test/src/com/thread/IntegerLockTest.java
+END
+CookingTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/repos/!svn/ver/3/Test/src/com/thread/CookingTest.java
+END
+ThreadTogetherTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/repos/!svn/ver/3/Test/src/com/thread/ThreadTogetherTest.java
+END
+FutureTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/repos/!svn/ver/3/Test/src/com/thread/FutureTest.java
+END
+LatchTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/repos/!svn/ver/3/Test/src/com/thread/LatchTest.java
+END
+ThreadTogetherTest2.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/repos/!svn/ver/3/Test/src/com/thread/ThreadTogetherTest2.java
+END
+PhilosopherTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/repos/!svn/ver/3/Test/src/com/thread/PhilosopherTest.java
+END
+ExecutorTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/repos/!svn/ver/3/Test/src/com/thread/ExecutorTest.java
+END

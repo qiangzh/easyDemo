@@ -1,0 +1,96 @@
+9
+
+dir
+3
+https://192.168.167.63/svn/repos/Test/src/com
+https://192.168.167.63/svn/repos
+
+
+
+2013-04-07T08:47:02.765625Z
+3
+zhq
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+aed2f0c9-ddc8-1f4a-b011-1ab662487118
+
+
+
+
+
+
+0
+
+generics
+dir
+
+Test.java
+file
+
+
+
+
+2013-03-29T03:14:15.046875Z
+7a2a4710d6675ebfa51a64e2438b916d
+2013-04-07T08:47:02.765625Z
+3
+zhq
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+657
+
+proxy
+dir
+
+zip
+dir
+
+reflect
+dir
+
+enumerate
+dir
+
+thread
+dir
+
+beans
+dir
+
+annotation
+dir
+
+classloader
+dir
+

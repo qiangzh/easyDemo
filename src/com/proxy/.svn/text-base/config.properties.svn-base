@@ -1,0 +1,6 @@
+#Created by JInto - www.guh-software.de
+#Fri Mar 22 09:11:01 CST 2013
+myList=java.util.ArrayList
+myProxy.advicer=com.proxy.MyAdvicer
+myProxy.target=java.util.ArrayList
+myProxy=com.proxy.ProxyFactoryBean

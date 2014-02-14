@@ -1,0 +1,100 @@
+package com.thread;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
+
+//TODO 
+public class CookingTest {
+
+    public static void main(String[] args) throws Exception {
+        final int count = 100;
+        final List<Potato> initList = new ArrayList();
+        for (int i = 0; i < count; i++) {
+            Potato potato = new Potato();
+            initList.add(potato);
+        }
+        Pan pan = new Pan();
+        new Thread(new Runnable() {
+            public void run() {
+            }
+        }).start();
+
+    }
+
+}
+
+class Potato {
+    public Potato() {
+        this.id = UUID.randomUUID().toString();
+        this.cooked = 0;
+        this.thick = new Random().nextInt(5);
+    }
+
+    private String id;
+
+    private int thick;
+
+    private int cooked;
+
+    public boolean isCooked() {
+        return cooked > thick * 2;
+    }
+
+    public boolean isBurnt() {
+        return cooked > thick * 3;
+    }
+
+    public void cook() {
+        this.cooked++;
+    }
+
+    @Override
+    public String toString() {
+        return "Potato [id=" + id + ", thick=" + thick + ", cooked=" + cooked + ",state=" + (cooked == thick * 2) + "]";
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Potato other = (Potato) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        }
+        else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+
+}
+
+class Pan {
+    List list = new ArrayList();
+
+    public boolean isFull() {
+        return !(list.size() < 10);
+    }
+
+    public void addPotato(Potato potato) {
+        list.add(potato);
+    }
+
+    public void removePotato(Potato potato) {
+        list.remove(potato);
+    }
+}

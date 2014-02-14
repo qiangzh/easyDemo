@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+					http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+					http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-lazy-init="false">
+<!-- 
+	<bean id="nativeJdbcExtractor"
+		class="org.springframework.jdbc.support.nativejdbc.C3P0NativeJdbcExtractor"
+		lazy-init="true" />
+	<bean id="oracleLobHandler"
+		class="org.springframework.jdbc.support.lob.OracleLobHandler"
+		lazy-init="true">
+		<property name="nativeJdbcExtractor" ref="nativeJdbcExtractor" />
+	</bean>
+ -->
+<!-- 
+	<bean id="defaultLobHandler"
+		class="org.springframework.jdbc.support.lob.DefaultLobHandler"
+		lazy-init="true" />
+ -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    	<property name="locations">
+    		<list>
+    		<value>classpath:jdbc.properties</value>
+    		<value>classpath:fileInterface.properties</value>
+    		<!--
+			<value>/WEB-INF/jdbc.properties</value>
+			-->
+			</list>
+		</property>
+	</bean>
+	<bean id="ftpInfo"
+		class="com.neusoft.dx.file.FtpInfo" scope="singleton">
+		<property name="ftpHost">
+			<value>${ServerIP}</value>
+		</property>
+		<property name="ftpPort">
+			<value>${ServerPort}</value>
+		</property>
+		<property name="userName">
+			<value>${ServerID}</value>
+		</property>
+		<property name="userPwd">
+			<value>${ServerPWD}</value>
+		</property>
+		<property name="ftpTimeOut">
+			<value>${Timeout}</value>
+		</property>
+		<property name="remotePath">
+			<value>${remotePath}</value>
+		</property>
+		<property name="localPath">
+			<value>${localPath}</value>
+		</property>
+	</bean>
+	<bean id="ServiceFactory" class="com.neusoft.dx.file.ServiceFactory"></bean>		
+	
+	<!-- oauth start -->
+	<bean id="oauthServiceFactory" class="com.neusoft.tsdcms.oauth.ioc.OauthServiceFactory"></bean>
+	<bean id="baseinterface" class="com.neusoft.tsdcms.oauth.service.BaseInterfaceImpl"></bean>
+	<bean id="crminterface" class="com.neusoft.tsdcms.oauth.service.CRMInterfaceImpl"></bean>
+	<!-- oauth end -->	
+	
+	<bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">		
+		<property name="driver" value="${db.driver}"/>
+		<property name="driverUrl" value="${db.url}"/>
+		<property name="user" value="${db.user}"/>
+		<property name="password" value="${db.password}"/>
+    	<property name="alias" value="${db.alias}"/>
+    	<property name="houseKeepingTestSql" value="${db.houseKeepingTestSql}"/>
+    	<property name="maximumConnectionCount" value="${db.maximumConnectionCount}"/>
+    	<property name="minimumConnectionCount" value="${db.minimumConnectionCount}"/>
+	    <!-- add start test -->
+    	<property name="simultaneousBuildThrottle" value="${db.simultaneousBuildThrottle}"/>
+    	<!-- add end test -->
+    	<property name="delegateProperties" value="characterEncoding=${db.characterEncoding}"/>
+	</bean>
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mappingDirectoryLocations">
+			<list>
+			<value>classpath*:com/neusoft/tsdcms/core/entity/*.xml</value>
+			<value>classpath*:com/neusoft/tsdcms/cms/entity/*.xml</value>
+			<value>classpath*:com/neusoft/tsdcms/article/entity/*.xml</value>
+			<value>classpath*:com/neusoft/tsdcms/download/entity/*.xml</value>
+			<value>classpath*:com/neusoft/tsdcms/auxiliary/entity/*.xml</value>
+			<value>classpath*:com/neusoft/tsdcms/supply_demand/entity/*.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<value>
+			hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
+			hibernate.show_sql=true
+			hibernate.format_sql=false
+			hibernate.query.substitutions=true 1, false 0
+			hibernate.jdbc.batch_size=20
+			hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider
+			hibernate.cache.provider_configuration_file_resource_path=/ehcache-hibernate.xml
+			hibernate.autoReconnect=true
+			</value>
+		</property>
+		<property name="entityInterceptor">   
+			<ref local="treeInterceptor"/>
+		</property>
+		<!--
+		<property name="mappingResources">
+			<list>
+			<value>com/neusoft/tsdcms/cms/entity/Website.hbm.xml</value>
+			</list>
+		</property>
+		-->
+	</bean>
+	<bean id="treeInterceptor" class="com.neusoft.tsdcms.common.hibernate3.TreeIntercptor">
+	</bean>
+	<!-- 事务配置 -->
+	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
+	<context:component-scan base-package="com.neusoft.tsdcms" />
+	
+	<!-- 使用annotation定义事务 -->
+	<tx:annotation-driven transaction-manager="txManager" />
+</beans>

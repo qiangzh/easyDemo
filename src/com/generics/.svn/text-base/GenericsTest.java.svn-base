@@ -1,0 +1,78 @@
+package com.generics;
+
+import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * 
+ *  范型应用
+ *  @author zhqiang
+ *  @created 2013-3-15 上午09:22:45
+ *  @lastModified       
+ *  @history
+ */
+public class GenericsTest {
+
+    public static void main(String[] args) throws SecurityException, NoSuchMethodException {
+        //1、 变量声明
+        List<String> list = new ArrayList<String>();
+        list.add("1");
+        list.add("2");
+        printList(list);
+
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        map.put("java", 10);
+        map.put("C#", 20);
+        map.put("python", 30);
+        Set<Map.Entry<String, Integer>> entrySet = map.entrySet();
+        for (Map.Entry<String, Integer> entry : entrySet) {
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }
+        System.out.println(getInt(1.67f, 20L));
+        System.out.println(getInt(111.67d, 20L));
+        Set set = new HashSet();
+        set.add("a");
+        set.add("b");
+        set.add("c");
+        System.out.println(getSize(set, list));
+        
+        StudentDAO<String> dao = new StudentDAO<String>();
+        dao.addStudent("aaa");
+        String a = dao.getStudent(1);
+        //Integer b = dao.getStudent(1); //error
+        
+        // 4、reflect ???
+        Method method = GenericsTest.class.getMethod("method", List.class);
+        Type[] type = method.getGenericParameterTypes();
+        System.out.println(((ParameterizedType)type[0]).getActualTypeArguments()[0]);
+
+    }
+
+    //2、方法参数
+    public static void printList(Collection<?> collection) {
+        System.out.println(collection.size());
+    }
+
+    //extends 实现类
+    public static <T extends Number>int getInt(T t1,T t2) { 
+        return t1.intValue()+t2.intValue();
+    }    
+
+    //extends 接口
+    public static <T extends Collection>int getSize(T t1,T t2) { 
+        return t1.size()+t2.size();
+    }
+    
+    public static <T>void method(List<T> list) {
+        System.out.println(list.size());
+    }
+}
+

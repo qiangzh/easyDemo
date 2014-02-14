@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/repos/!svn/ver/3/Test/src/com/classloader
+END
+NetworkClassLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/repos/!svn/ver/3/Test/src/com/classloader/NetworkClassLoader.java
+END
+OneClass.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/repos/!svn/ver/3/Test/src/com/classloader/OneClass.java
+END
+ClassLoaderTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/repos/!svn/ver/3/Test/src/com/classloader/ClassLoaderTest.java
+END

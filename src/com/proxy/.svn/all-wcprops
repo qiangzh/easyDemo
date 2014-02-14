@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/repos/!svn/ver/3/Test/src/com/proxy
+END
+AOPTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/repos/!svn/ver/3/Test/src/com/proxy/AOPTest.java
+END
+ProxyFactoryBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/repos/!svn/ver/3/Test/src/com/proxy/ProxyFactoryBean.java
+END
+config.properties
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/repos/!svn/ver/3/Test/src/com/proxy/config.properties
+END
+MyAdvicer.java
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/repos/!svn/ver/3/Test/src/com/proxy/MyAdvicer.java
+END
+Advicer.java
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/repos/!svn/ver/3/Test/src/com/proxy/Advicer.java
+END
+BeanFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/repos/!svn/ver/3/Test/src/com/proxy/BeanFactory.java
+END
